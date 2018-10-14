@@ -50,6 +50,7 @@ build: clean
 
 .PHONY: dev
 dev: clean
+	open http://localhost:1313/
 	./bin/hugo server --disableFastRender
 
 .PHONY: tools
@@ -59,6 +60,10 @@ tools: download-hugo
 download-hugo:
 	mkdir -p bin
 	cd bin && curl -sSL $(HUGO_DOWNLOAD_URL) | tar -xvzf - hugo
+
+.PHONY: netlify-publish
+netlify-publish: theme-init
+	hugo
 
 ################################ MISC ########################################
 
