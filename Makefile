@@ -62,8 +62,13 @@ download-hugo:
 	cd bin && curl -sSL $(HUGO_DOWNLOAD_URL) | tar -xvzf - hugo
 
 .PHONY: netlify-publish
-netlify-publish: theme-init download-hugo
+netlify-publish: theme-init download-hugo functions
 	./bin/hugo
+
+.PHONY: functions
+functions:
+	go get ./...
+	go build -o functions/hello ./...
 
 ################################ MISC ########################################
 

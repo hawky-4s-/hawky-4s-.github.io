@@ -1,5 +1,7 @@
 # Global settings applied to the whole site.  
 # 
+# https://www.netlify.com/docs/netlify-toml-reference/
+#
 # “publish” is the directory to publish (relative to root of your repo),
 # “command” is your build command,
 # “base” is directory to change to before starting build. if you set base:
@@ -9,6 +11,11 @@
 #  base    = "site"
   publish = "public"
   command = "make netlify-publish"
+  functions = "functions"
+
+[build.environment]
+  # Change this path with the path to your repository
+  GO_IMPORT_PATH = "github.com/hawky-4s-/hawky-4s-.github.io"
 
 # Production context: All deploys to the main
 # repository branch will inherit these settings.
